@@ -5,10 +5,148 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vốn nhỏ thắng lớn</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #fff8f0;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        header {
+            background-color: #ff4d6d;
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 36px;
+        }
+
+        header p {
+            font-size: 18px;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            padding: 40px 20px;
+        }
+
+        .flower-card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .flower-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .flower-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .flower-card h3 {
+            margin: 15px 0 5px;
+            font-size: 22px;
+        }
+
+        .flower-card p {
+            margin: 0 10px 10px;
+            font-size: 16px;
+            color: #666;
+        }
+
+        .price {
+            font-weight: bold;
+            color: #e91e63;
+        }
+
+        .buy-button {
+            margin: 15px 0 20px;
+            padding: 10px 20px;
+            background-color: #ff4d6d;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .buy-button:hover {
+            background-color: #ff6e83;
+        }
+
+        footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 40px;
+        }
+
+        footer p {
+            margin: 8px 0;
+            font-size: 14px;
+        }
+    </style>
 </head>
 
-<body class="min-h-screen bg-cover bg-center"
-    style="background-image: url('https://cdn2.fptshop.com.vn/unsafe/1920x0/filters:format(webp):quality(75)/2024_5_20_638518205896977020_hinh-nen-may-tinh-chill-cover.jpeg');">
+<body>
+    <header>
+        <h1>🌸 Shop Hoa Tươi</h1>
+        <p>Hoa tươi mỗi ngày – Gửi yêu thương đến người bạn quan tâm</p>
+    </header>
+
+    <div class="container">
+        <!-- Hoa Hồng -->
+        <div class="flower-card">
+            <img src="https://hoayeuthuong.com/hinh-hoa-tuoi/thumb/hoa-khuyen-mai/6907_love-to-the-moon.jpg"
+                alt="Hoa Hồng"/>
+            <h3>Hoa Hồng Đỏ</h3>
+            <p>Hoa hồng tươi thắm – biểu tượng của tình yêu mãnh liệt</p>
+            <p class="price">150.000đ</p>
+            <button class="buy-button">Mua ngay</button>
+        </div>
+
+        <!-- Hoa Ly -->
+        <div class="flower-card">
+            <img src="https://hoayeuthuong.com/hinh-hoa-tuoi/thumb/hoa-khuyen-mai/14555_mini-flower-vase-01.jpg"
+                alt="Hoa Ly"/>
+            <h3>Hoa Ly Trắng</h3>
+            <p>Thanh khiết và sang trọng – món quà cho sự kính trọng</p>
+            <p class="price">180.000đ</p>
+            <button class="buy-button">Mua ngay</button>
+        </div>
+
+        <!-- Hoa Cẩm Chướng -->
+        <div class="flower-card">
+            <img src="https://hoayeuthuong.com/hinh-hoa-tuoi/thumb/binh-hoa-tuoi/12910_mini-flower-vase-07.jpg"
+                alt="Hoa Cẩm Chướng"/>
+            <h3>Hoa Cẩm Chướng</h3>
+            <p>Biểu tượng cho tình cảm sâu sắc và lòng biết ơn</p>
+            <p class="price">120.000đ</p>
+            <button class="buy-button">Mua ngay</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>📍 Địa chỉ: 123 Đường Hoa Hồng, Quận 1, TP.HCM</p>
+        <p>📞 Hotline: 0909 123 456 | ✉ Email: shophoatuoi@gmail.com</p>
+        <p>2025 Shop Hoa Tươi. All rights reserved.</p>
+    </footer>
     <script src="https://cdn.tailwindcss.com"></script>
     <div id="popupOverlay" class="fixed inset-0 bg-black bg-opacity-85 hidden items-center justify-center z-50 p-4">
         <div onclick="handleClick()"
@@ -88,7 +226,7 @@
                 }, 1000);
             }
         }
-        //document.addEventListener("DOMContentLoaded", main);
+        // document.addEventListener("DOMContentLoaded", main);
     </script>
 </body>
 
