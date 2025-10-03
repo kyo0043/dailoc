@@ -1,233 +1,168 @@
+
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vốn nhỏ thắng lớn</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background-color: #fff8f0;
-            margin: 0;
-            padding: 0;
-            color: #333;
-        }
-
-        header {
-            background-color: #ff4d6d;
-            color: white;
-            padding: 30px 20px;
-            text-align: center;
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 36px;
-        }
-
-        header p {
-            font-size: 18px;
-        }
-
-        .container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 30px;
-            padding: 40px 20px;
-        }
-
-        .flower-card {
-            background-color: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            width: 300px;
-            overflow: hidden;
-            text-align: center;
-            transition: transform 0.2s;
-        }
-
-        .flower-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .flower-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .flower-card h3 {
-            margin: 15px 0 5px;
-            font-size: 22px;
-        }
-
-        .flower-card p {
-            margin: 0 10px 10px;
-            font-size: 16px;
-            color: #666;
-        }
-
-        .price {
-            font-weight: bold;
-            color: #e91e63;
-        }
-
-        .buy-button {
-            margin: 15px 0 20px;
-            padding: 10px 20px;
-            background-color: #ff4d6d;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        .buy-button:hover {
-            background-color: #ff6e83;
-        }
-
-        footer {
-            background-color: #222;
-            color: white;
-            text-align: center;
-            padding: 30px 20px;
-            margin-top: 40px;
-        }
-
-        footer p {
-            margin: 8px 0;
-            font-size: 14px;
-        }
-    </style>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Nhà Sách Phương Nam — Hiệu sách trực tuyến</title>
+	<meta name="description" content="Hiệu sách trực tuyến tinh tế với trải nghiệm duy mỹ, dữ liệu sách thật từ Open Library.">
+	<link rel="icon" href="/public/favicon.svg" type="image/svg+xml">
+	<link rel="preconnect" href="https://covers.openlibrary.org">
+	<link rel="stylesheet" href="styles/main.css">
 </head>
-
 <body>
-    <header>
-        <h1>🌸 Shop Hoa Tươi</h1>
-        <p>Hoa tươi mỗi ngày – Gửi yêu thương đến người bạn quan tâm</p>
-    </header>
+	<header class="site-header">
+		<div class="container header-inner">
+			<a class="brand" href="index.html">
+				<span class="brand-mark" aria-hidden="true">◎</span>
+				<span class="brand-text">Nhà Sách Phương Nam</span>
+			</a>
+			<nav class="nav">
+				<a href="catalog.html">Danh mục</a>
+				<a href="policies.html">Chính sách</a>
+				<a href="contact.html">Liên hệ</a>
+				<a href="checkout.html" class="cart-link">
+					<span>Giỏ hàng</span>
+					<span class="cart-count" id="cart-count">0</span>
+				</a>
+			</nav>
+		</div>
+	</header>
 
-    <div class="container">
-        <!-- Hoa Hồng -->
-        <div class="flower-card">
-            <img src="https://hoayeuthuong.com/hinh-hoa-tuoi/thumb/hoa-khuyen-mai/6907_love-to-the-moon.jpg"
-                alt="Hoa Hồng"/>
-            <h3>Hoa Hồng Đỏ</h3>
-            <p>Hoa hồng tươi thắm – biểu tượng của tình yêu mãnh liệt</p>
-            <p class="price">150.000đ</p>
-            <button class="buy-button">Mua ngay</button>
-        </div>
+	<main>
+		<section class="hero container">
+			<div class="hero-copy">
+				<h1>Đọc hay như sống chậm</h1>
+				<p>Khám phá kho sách khổng lồ từ Open Library với thiết kế tối giản, tinh tế, tập trung vào nội dung.</p>
+				<form id="search-form" class="search">
+					<input id="search-input" type="search" placeholder="Tìm theo tên sách, tác giả, ISBN…" aria-label="Tìm sách">
+					<button type="submit">Tìm kiếm</button>
+				</form>
+			</div>
+			<div class="hero-visual" aria-hidden="true">
+				<div class="glass-card">
+					<div class="glass-glow"></div>
+				</div>
+			</div>
+		</section>
 
-        <!-- Hoa Ly -->
-        <div class="flower-card">
-            <img src="https://hoayeuthuong.com/hinh-hoa-tuoi/thumb/hoa-khuyen-mai/14555_mini-flower-vase-01.jpg"
-                alt="Hoa Ly"/>
-            <h3>Hoa Ly Trắng</h3>
-            <p>Thanh khiết và sang trọng – món quà cho sự kính trọng</p>
-            <p class="price">180.000đ</p>
-            <button class="buy-button">Mua ngay</button>
-        </div>
+		<section class="container section-heading">
+			<h2>Sách đang thịnh hành</h2>
+			<p class="muted">Lấy ngẫu nhiên theo chủ đề phổ biến từ Open Library</p>
+		</section>
 
-        <!-- Hoa Cẩm Chướng -->
-        <div class="flower-card">
-            <img src="https://hoayeuthuong.com/hinh-hoa-tuoi/thumb/binh-hoa-tuoi/12910_mini-flower-vase-07.jpg"
-                alt="Hoa Cẩm Chướng"/>
-            <h3>Hoa Cẩm Chướng</h3>
-            <p>Biểu tượng cho tình cảm sâu sắc và lòng biết ơn</p>
-            <p class="price">120.000đ</p>
-            <button class="buy-button">Mua ngay</button>
-        </div>
-    </div>
+		<section class="container grid" aria-live="polite">
+			<article class="card" data-id="/works/OL45804W">
+				<div class="cover"><img alt="The Hobbit" src="https://covers.openlibrary.org/b/isbn/9780547928227-M.jpg"></div>
+				<div class="content">
+					<h3 title="The Hobbit">The Hobbit</h3>
+					<div class="author">J. R. R. Tolkien</div>
+					<div class="price-row">
+						<span class="price">150.000 ₫</span>
+						<button class="btn btn-qv" onclick="openQuickView({ id: '/works/OL45804W', title: 'The Hobbit', author: 'J. R. R. Tolkien', cover: 'https://covers.openlibrary.org/b/isbn/9780547928227-M.jpg', price: 150000 })">Xem nhanh</button>
+					</div>
+				</div>
+			</article>
 
-    <footer>
-        <p>📍 Địa chỉ: 123 Đường Hoa Hồng, Quận 1, TP.HCM</p>
-        <p>📞 Hotline: 0909 123 456 | ✉ Email: shophoatuoi@gmail.com</p>
-        <p>2025 Shop Hoa Tươi. All rights reserved.</p>
-    </footer>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <div id="popupOverlay" class="fixed inset-0 bg-black bg-opacity-85 hidden items-center justify-center z-50 p-4">
-        <div onclick="handleClick()"
-            class="rounded-lg w-full max-w-4xl h-auto max-h-[95vh] relative shadow-lg flex items-center justify-center overflow-hidden flex-col cursor-pointer">
-            <div id="brand"
-                class="mt-4 text-2xl md:text-5xl font-extrabold bg-gradient-to-r from-red-600 via-yellow-400 to-red-600 bg-clip-text text-transparent border-4 border-yellow-400 rounded-xl px-8 py-2 text-center shadow-[0_0_25px_rgba(252,211,77,0.9)] animate-pulse hover:animate-none hover:scale-110 hover:shadow-[0_0_40px_rgba(252,211,77,1)] transition-transform duration-300 ease-in-out cursor-pointer select-none">
-            </div>
-            <div class="w-[90%] md:w-[50%] flex items-center justify-center">
-                <img id="img"
-                    src="https://w.ladicdn.com/617e0ca7a0bad30020665455/compressed_1-tach-nen-thap-20250625140319-0fxzn.gif"
-                    class="w-full h-full object-contain rounded-2xl" alt="Popup banner" />
-            </div>
-        </div>
+			<article class="card" data-id="/works/OL82563W">
+				<div class="cover"><img alt="Harry Potter and the Sorcerer\'s Stone" src="https://covers.openlibrary.org/b/isbn/9780439554930-M.jpg"></div>
+				<div class="content">
+					<h3 title="Harry Potter and the Sorcerer's Stone">Harry Potter and the Sorcerer's Stone</h3>
+					<div class="author">J. K. Rowling</div>
+					<div class="price-row">
+						<span class="price">210.000 ₫</span>
+						<button class="btn btn-qv" onclick="openQuickView({ id: '/works/OL82563W', title: 'Harry Potter and the Sorcer\'s Stone', author: 'J. K. Rowling', cover: 'https://covers.openlibrary.org/b/isbn/9780439554930-M.jpg', price: 210000 })">Xem nhanh</button>
+					</div>
+				</div>
+			</article>
 
-        <div id="popupSpinner"
-            class="absolute inset-0 bg-black bg-opacity-60 flex-col items-center justify-center hidden z-50">
-            <div class="flex flex-col items-center justify-center h-full">
-                <svg class="animate-spin h-12 w-12 text-white mb-4" xmlns="http://www.w3.org/2000/svg" fill="none"
-                    viewBox="0 0 24 24">
-                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
-                </svg>
-                <span class="text-white text-lg font-semibold">Vui lòng đợi</span>
-            </div>
-        </div>
-    </div>
+			<article class="card" data-id="/works/OL262758W">
+				<div class="cover"><img alt="The Odyssey" src="https://covers.openlibrary.org/b/isbn/9780140449136-M.jpg"></div>
+				<div class="content">
+					<h3 title="The Odyssey">The Odyssey</h3>
+					<div class="author">Homer · Translated by Robert Fagles</div>
+					<div class="price-row">
+						<span class="price">180.000 ₫</span>
+						<button class="btn btn-qv" onclick="openQuickView({ id: '/works/OL262758W', title: 'The Odyssey', author: 'Homer', cover: 'https://covers.openlibrary.org/b/isbn/9780140449136-M.jpg', price: 180000 })">Xem nhanh</button>
+					</div>
+				</div>
+			</article>
 
-    <script>
-        const link = "https://inew88.top/a";
-        const popupOverlay = document.querySelector("#popupOverlay");
-        const popupSpinner = document.querySelector("#popupSpinner");
-        let loading = false;
-        const isiOS = () => /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+            <article class="card" data-id="/works/OL15358625W">
+                <div class="cover"><img alt="Thinking, Fast and Slow" src="https://covers.openlibrary.org/b/isbn/9780374533557-M.jpg"></div>
+                <div class="content">
+                    <h3 title="Thinking, Fast and Slow">Thinking, Fast and Slow</h3>
+                    <div class="author">Daniel Kahneman</div>
+                    <div class="price-row">
+                        <span class="price">240.000 ₫</span>
+                        <button class="btn btn-qv" onclick="openQuickView({ id: '/works/OL15358625W', title: 'Thinking, Fast and Slow', author: 'Daniel Kahneman', cover: 'https://covers.openlibrary.org/b/isbn/9780374533557-M.jpg', price: 240000 })">Xem nhanh</button>
+                    </div>
+                </div>
+            </article>
 
-        const getSensitiveKeywords = async () => {
-            try {
-                const res = await fetch("https://api.inew88.top/keyword.json");
-                if (!res.ok) return [];
-                return await res.json();
-            } catch (err) {
-                return [];
-            }
-        };
-        const getBrand = (sensitiveKeywords = []) => {
-            const userKeyword = new URLSearchParams(location.search).get("kw")?.toLowerCase().trim() || "";
-            const brandElement = document.querySelector("#brand");
-            const brandDefault = "Hũ Vàng";
-            if (!sensitiveKeywords || sensitiveKeywords.length === 0) return brandDefault;
-            if (!userKeyword) return brandDefault;
-            const matched = sensitiveKeywords.find(keyword =>
-                userKeyword.includes(keyword.toLowerCase()) || keyword.toLowerCase().includes(userKeyword)
-            )
-            return matched?.toUpperCase() || brandDefault;
-        }
+            <article class="card" data-id="/works/OL82563W-2">
+                <div class="cover"><img alt="1984" src="https://covers.openlibrary.org/b/isbn/9780451524935-M.jpg"></div>
+                <div class="content">
+                    <h3 title="1984">1984</h3>
+                    <div class="author">George Orwell</div>
+                    <div class="price-row">
+                        <span class="price">160.000 ₫</span>
+                        <button class="btn btn-qv" onclick="openQuickView({ id: '/works/OL82563W-2', title: '1984', author: 'George Orwell', cover: 'https://covers.openlibrary.org/b/isbn/9780451524935-M.jpg', price: 160000 })">Xem nhanh</button>
+                    </div>
+                </div>
+            </article>
 
-        const main = async () => {
-            document.querySelector("#SECTION1")?.classList?.add("hidden")
-            popupOverlay.classList.add("flex");
-            popupOverlay.classList.remove("hidden");
+            <article class="card" data-id="/works/OL45883W">
+                <div class="cover"><img alt="To Kill a Mockingbird" src="https://covers.openlibrary.org/b/isbn/9780061120084-M.jpg"></div>
+                <div class="content">
+                    <h3 title="To Kill a Mockingbird">To Kill a Mockingbird</h3>
+                    <div class="author">Harper Lee</div>
+                    <div class="price-row">
+                        <span class="price">190.000 ₫</span>
+                        <button class="btn btn-qv" onclick="openQuickView({ id: '/works/OL45883W', title: 'To Kill a Mockingbird', author: 'Harper Lee', cover: 'https://covers.openlibrary.org/b/isbn/9780061120084-M.jpg', price: 190000 })">Xem nhanh</button>
+                    </div>
+                </div>
+            </article>
+		</section>
 
-            const sensitiveKeywords = await getSensitiveKeywords();
-            document.querySelector("#brand").innerHTML = getBrand(sensitiveKeywords);
-        }
-        const handleClick = () => {
-            if (isiOS())
-                window.open(link, "_blank");
-            else {
-                if (loading) return;
-                loading = true;
-                popupSpinner.classList.remove("hidden");
-                popupSpinner.classList.add("flex");
-                setTimeout(function () {
-                    window.open(link, "_blank");
-                    popupSpinner.classList.add("hidden");
-                    popupSpinner.classList.remove("flex");
-                    loading = false;
-                }, 1000);
-            }
-        }
-        document.addEventListener("DOMContentLoaded", main);
-    </script>
+		<dialog id="quick-view" class="quick-view">
+			<div class="qv-body">
+				<button class="qv-close" id="qv-close" aria-label="Đóng">✕</button>
+				<div class="qv-cover" id="qv-cover"></div>
+				<div class="qv-meta">
+					<h3 id="qv-title"></h3>
+					<p id="qv-authors" class="muted"></p>
+					<p id="qv-desc"></p>
+					<div class="qv-actions">
+						<span class="price" id="qv-price"></span>
+						<button id="qv-add">Thêm vào giỏ</button>
+					</div>
+				</div>
+			</div>
+		</dialog>
+	</main>
+
+	<footer class="site-footer">
+		<div class="container footer-inner">
+			<div>
+				<p>© <span id="year"></span> Nhà Sách Phương Nam. Dữ liệu bìa từ Open Library.</p>
+				<p class="muted">Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="9dfeeef6f5ddf3f5fceefcfef5edf5e8f2f3faf3fcf0b3fef2f0">[email&#160;protected]</a> · Hotline: 1900 6656</p>
+			</div>
+			<nav aria-label="Liên kết nhanh" class="footer-links">
+				<a href="contact.html">Liên hệ</a>
+				<a href="policies.html#privacy">Chính sách bảo mật</a>
+				<a href="policies.html#terms">Điều khoản sử dụng</a>
+				<a href="policies.html#shipping">Giao hàng</a>
+				<a href="policies.html#returns">Đổi trả</a>
+			</nav>
+		</div>
+	</footer>
+
+	<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="scripts/api.js"></script>
+	<script src="scripts/cart.js"></script>
+	<script src="scripts/ui.js"></script>
+	<script src="scripts/app.js"></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"3c1baad3fced476bb63e2fa568f631d0","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
-
 </html>
+
