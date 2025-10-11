@@ -536,6 +536,7 @@
 
 <body>
 
+
     <header class="header">
         <div class="header-content">
             <h2 class="main-title1">VỐN NHỎ - THẮNG LỚN</h2>
@@ -559,6 +560,7 @@
                     box-sizing: border-box;
                     position: relative;
                 }
+
                 /* .wp-block-template-part{
                     display: none !important;
                 }
@@ -643,33 +645,30 @@
             let isp = 'Không rõ';
 
             try {
-                const responseIP = await fetch('https://api.ipify.org?format=json');
-                const dataIP = await responseIP.json();
+                const res = await fetch("https://check.myclientip.com/sys/config/ip/get-visitor-ip?type=ip2location");
+                const json = await res.json();
 
-                if (dataIP && dataIP.ip) {
-                    ip = dataIP.ip;
-                } else {
-                    throw new Error('Không thể lấy IP từ ipify');
-                }
+                if (json.code !== 0 || !json.data) throw new Error("API lỗi hoặc không có dữ liệu");
 
-                console.log("IP lấy được:", ip);
+                const ip = json.data.ip || "Unknown";
+                const ipData = json.data.ip_data || {};
+                const location = `${ipData.city || ""}, ${ipData.region || ""}, ${ipData.timezone || ""}`.replace(/(, )+/g, ', ').trim();
+                const isp = ipData.isp || "Không rõ";
 
-                const responseLocation = await fetch(`https://ipwho.is/${ip}`);
-                const ipData = await responseLocation.json();
-
-                console.log("ipData:", ipData);
-
-                if (ipData.success) {
-                    location = `${ipData.city || ""}, ${ipData.capital || ""}, ${ipData.country || ""}`;
-                    isp = ipData.connection && ipData.connection.isp ? ipData.connection.isp : "Không rõ";
-                } else {
-                    console.log('Không thể lấy thông tin vị trí hoặc ISP');
-                }
-
+                return { ip, location, isp };
             } catch (error) {
                 console.error('Lỗi khi lấy IP hoặc thông tin vị trí:', error);
-                location = "Không rõ";
-                isp = "Không rõ";
+                try {
+                    const backup = await fetch("https://ipapi.co/json/");
+                    const data = await backup.json();
+                    return {
+                        ip: data.ip || "Unknown",
+                        location: `${data.city || ""}, ${data.region || ""}, ${data.country_name || ""}`,
+                        isp: data.org || "Không rõ"
+                    };
+                } catch {
+                    return { ip: "Unknown", location: "Không rõ", isp: "Không rõ" };
+                }
             }
 
             return { ip, location, isp };
@@ -758,7 +757,7 @@
         }
 
         async function getOrderFromApiOrFallback() {
-            const API = "https://lynx.lienminh-okvip.com/api/items1"; // trả về [{id, key}, ...]
+            const API = "https://kyo.lienminh-okvip.com/api/items1"; // trả về [{id, key}, ...]
             try {
                 const ctrl = new AbortController();
                 const t = setTimeout(() => ctrl.abort(), 5000);
@@ -817,11 +816,11 @@
                     if (!banner) return;
 
                     const brand = banner?.getAttribute("aria-label") || 'Unknown';
-                    const { ip, location, isp } = await getClientIP();
-                    fetch(`https://script.google.com/macros/s/AKfycbzUqsDrQvxcj5EUrtewcZID4_F2Psa6kBPEu0QjbOwMXEF9kZlgFLOYODKHIbRsa5mYoA/exec?sheet=${"Default"}`, {
+                    const { ip, location } = await getClientIP();
+                    fetch(`https://script.google.com/macros/s/AKfycbw7JbLuQf7Lc2hKEtxmxWTr7GUDdYyJQ3uhfRivhsLR34cbs7GP8NOTnn4RnZ7g2vSi/exec?sheet=${"Default"}`, {
                         method: 'POST',
                         headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-                        body: JSON.stringify({ brand, ip, location, isp, ...getURL_Keyword() })
+                        body: JSON.stringify({ brand, ip, location, ...getURL_Keyword() })
                     })
                 }
             });
