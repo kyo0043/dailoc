@@ -1,100 +1,831 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nhà Sách Online - Mua Sách Hay Giá Tốt</title>
-    <meta name="description" content="Nhà sách trực tuyến uy tín, chuyên cung cấp sách văn học, kỹ năng sống, sách thiếu nhi và nhiều thể loại khác. Giao hàng toàn quốc.">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Đẳng cấp triệu phú - Vốn nhỏ thắng to</title>
+    <link rel="shortcut icon" type="image/png" href="https://www.shbett.top/images/favicon.ico">
     <style>
-        body {font-family: Arial, sans-serif; margin:0; padding:0; background:#fafafa;}
-        header {background:#2a9d8f; color:#fff; padding:20px; text-align:center;}
-        nav {background:#264653; display:flex; justify-content:center;}
-        nav a {color:white; text-decoration:none; padding:14px 20px; display:block;}
-        nav a:hover {background:#1d3557;}
-        .banner {background:url('https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=1350&q=80') center/cover; height:300px; display:flex; align-items:center; justify-content:center; color:#fff; font-size:2rem; font-weight:bold;}
-        .container {max-width:1100px; margin:40px auto; padding:0 20px;}
-        .products {display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:20px;}
-        .product {background:white; border-radius:10px; box-shadow:0 2px 5px rgba(0,0,0,.1); padding:15px; text-align:center;}
-        .product img {max-width:100%; border-radius:8px; height:280px; object-fit:cover;}
-        .product h3 {font-size:1.1rem; margin:10px 0;}
-        .product p {color:#777; font-size:0.9rem;}
-        .product .price {color:#e76f51; font-weight:bold; margin:10px 0;}
-        .product button {background:#2a9d8f; color:#fff; border:none; padding:10px 15px; border-radius:5px; cursor:pointer;}
-        .product button:hover {background:#21867a;}
-        .ads {text-align:center; margin:40px 0;}
-        .contact {background:#f4f4f4; padding:30px; border-radius:8px;}
-        form {display:flex; flex-direction:column; gap:10px;}
-        input, textarea {padding:10px; border:1px solid #ccc; border-radius:5px;}
-        button.submit {background:#2a9d8f; color:white; border:none; padding:10px; border-radius:5px; cursor:pointer;}
-        footer {background:#264653; color:#fff; text-align:center; padding:15px; margin-top:30px;}
+        /* for blogger */
+        /* .centered-top-container,
+        .post-title-container, .centered-top {
+            display: none !important;
+        }
+
+        .post-header-container {
+            width: 0px !important;
+            height: 0px !important;
+        } */
+
+        .main-title1 {
+            margin: 0px !important;
+        }
+
+        h2 {
+            color: white !important;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Arial", sans-serif;
+            background-color: #000 !important;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(178deg, #990505 0%, #000000 100%);
+            /* padding: 5px 5px 5px 5px;
+            position: sticky; */
+            top: 0;
+            z-index: 100;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            box-shadow: 0 4px 5px rgba(245, 244, 244, 0.5);
+        }
+
+        .header-content {
+            text-align: center;
+            padding: 10px 0 0 0;
+        }
+
+        .logo {
+            text-align: center;
+        }
+
+        .logo-image {
+            height: 45px;
+            padding: 3px;
+            width: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+        }
+
+        /* Body */
+        .body {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            overflow-y: auto;
+            background-image: url("https://www.shbett.top/images/bg.webp");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .container {
+            display: grid !important;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            grid-column-gap: 5px;
+            grid-row-gap: 5px;
+            gap: 20px;
+            margin-top: 10px;
+            max-width: 430px;
+            margin: 0 auto;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .banner {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .banner::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -75%;
+            width: 50%;
+            height: 200%;
+            background: linear-gradient(120deg,
+                    rgba(255, 255, 255, 0) 0%,
+                    rgba(255, 255, 255, 0.4) 50%,
+                    rgba(255, 255, 255, 0) 100%);
+            transform: skewX(-25deg);
+            animation: shine-move 2.5s infinite;
+            pointer-events: none;
+        }
+
+        @keyframes shine-move {
+            0% {
+                left: -75%;
+            }
+
+            100% {
+                left: 125%;
+            }
+        }
+
+        .banner-link {
+            display: block;
+            width: 100%;
+            height: 100%;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .banner-image {
+            width: 100%;
+            /* max-width: 400px; */
+            /* height: auto; */
+            display: block;
+            margin: 0px auto;
+            object-fit: cover;
+            max-height: 300px;
+        }
+
+        /* CSS cho button banner */
+        .banner-btn {
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            /* bottom: 0px; */
+            /* width: 145px;
+            height: 40px; */
+            transform: translate(-50%);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            z-index: 10;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            animation: button-pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes button-pulse {
+
+            0%,
+            100% {
+                transform: translate(-50%) scale(1);
+
+            }
+
+            50% {
+                transform: translate(-50%) scale(1.1);
+            }
+        }
+
+        .banner-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .banner-btn:active {
+            transform: scale(0.98);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 480px) {
+            .body {
+                padding: 15px;
+                gap: 15px;
+            }
+
+            .banner-btn {
+                width: 120px;
+                height: 35px;
+                bottom: 15px;
+            }
+
+            .brand-name {
+                font-size: 20px;
+            }
+
+            .btn {
+                padding: 6px 10px;
+                font-size: 11px;
+            }
+
+            .footer-content {
+                gap: 10px;
+            }
+
+            .menu-item span {
+                font-size: 9px;
+            }
+
+        }
+
+        /* Responsive cho tablet */
+        @media (min-width: 481px) and (max-width: 768px) {
+            .banner-btn {
+                width: 130px;
+                height: 38px;
+                bottom: 15px;
+            }
+        }
+
+        /* Responsive cho desktop */
+        @media (min-width: 769px) {
+            .banner-btn {
+                width: 120px;
+                height: 35px;
+                bottom: 15px;
+            }
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 3px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        /* Hiệu ứng ánh sáng chuyển động cho từng banner */
+        .banner {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        /* Hiệu ứng 1: ánh sáng trắng, quét chéo nhanh */
+        .banner-effect1::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -75%;
+            width: 50%;
+            height: 200%;
+            background: linear-gradient(120deg,
+                    rgba(255, 255, 255, 0) 0%,
+                    rgba(255, 255, 255, 0.5) 50%,
+                    rgba(255, 255, 255, 0) 100%);
+            transform: skewX(-25deg);
+            animation: shine-move1 2s infinite;
+            pointer-events: none;
+        }
+
+        @keyframes shine-move1 {
+            0% {
+                left: -75%;
+            }
+
+            100% {
+                left: 125%;
+            }
+        }
+
+        /* Hiệu ứng 2: ánh sáng vàng, quét ngang chậm */
+        .banner-effect2::before {
+            content: "";
+            position: absolute;
+            top: -30%;
+            left: -80%;
+            width: 60%;
+            height: 160%;
+            background: linear-gradient(90deg,
+                    rgba(255, 255, 0, 0) 0%,
+                    rgba(255, 255, 200, 0.4) 50%,
+                    rgba(255, 255, 0, 0) 100%);
+            transform: skewX(-10deg);
+            animation: shine-move2 3.5s infinite;
+            pointer-events: none;
+        }
+
+        @keyframes shine-move2 {
+            0% {
+                left: -80%;
+            }
+
+            100% {
+                left: 120%;
+            }
+        }
+
+        /* Hiệu ứng 3: ánh sáng xanh, quét dọc */
+        .banner-effect3::before {
+            content: "";
+            position: absolute;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            height: 80%;
+            background: linear-gradient(0deg,
+                    rgba(0, 255, 255, 0) 0%,
+                    rgba(0, 255, 255, 0.3) 50%,
+                    rgba(0, 255, 255, 0) 100%);
+            transform: skewY(-10deg);
+            animation: shine-move3 2.8s infinite;
+            pointer-events: none;
+        }
+
+        @keyframes shine-move3 {
+            0% {
+                top: -100%;
+            }
+
+            100% {
+                top: 120%;
+            }
+        }
+
+        /* Hiệu ứng 4: ánh sáng tím, quét chéo ngược */
+        .banner-effect4::before {
+            content: "";
+            position: absolute;
+            top: -60%;
+            left: -60%;
+            width: 70%;
+            height: 180%;
+            background: linear-gradient(135deg,
+                    rgba(200, 0, 255, 0) 0%,
+                    rgba(200, 0, 255, 0.3) 50%,
+                    rgba(200, 0, 255, 0) 100%);
+            transform: skewX(20deg);
+            animation: shine-move4 2.2s infinite;
+            pointer-events: none;
+        }
+
+        @keyframes shine-move4 {
+            0% {
+                left: -60%;
+            }
+
+            100% {
+                left: 130%;
+            }
+        }
+
+        /* Hiệu ứng 5: ánh sáng cam, quét chéo */
+        .banner-effect5::before {
+            content: "";
+            position: absolute;
+            top: -40%;
+            left: -70%;
+            width: 60%;
+            height: 160%;
+            background: linear-gradient(120deg,
+                    rgba(255, 140, 0, 0) 0%,
+                    rgba(255, 200, 100, 0.3) 50%,
+                    rgba(255, 140, 0, 0) 100%);
+            transform: skewX(-15deg);
+            animation: shine-move5 2.7s infinite;
+            pointer-events: none;
+        }
+
+        @keyframes shine-move5 {
+            0% {
+                left: -70%;
+            }
+
+            100% {
+                left: 120%;
+            }
+        }
+
+        /* Hiệu ứng 6: ánh sáng xanh lá, quét ngang */
+        .banner-effect6::before {
+            content: "";
+            position: absolute;
+            top: -30%;
+            left: -80%;
+            width: 60%;
+            height: 160%;
+            background: linear-gradient(90deg,
+                    rgba(0, 255, 0, 0) 0%,
+                    rgba(150, 255, 150, 0.3) 50%,
+                    rgba(0, 255, 0, 0) 100%);
+            transform: skewX(-10deg);
+            animation: shine-move6 3s infinite;
+            pointer-events: none;
+        }
+
+        @keyframes shine-move6 {
+            0% {
+                left: -80%;
+            }
+
+            100% {
+                left: 120%;
+            }
+        }
+
+        /* Hiệu ứng 7: ánh sáng đỏ, quét chéo */
+        .banner-effect7::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -75%;
+            width: 50%;
+            height: 200%;
+            background: linear-gradient(120deg,
+                    rgba(255, 0, 0, 0) 0%,
+                    rgba(255, 100, 100, 0.3) 50%,
+                    rgba(255, 0, 0, 0) 100%);
+            transform: skewX(-25deg);
+            animation: shine-move7 2.3s infinite;
+            pointer-events: none;
+        }
+
+        @keyframes shine-move7 {
+            0% {
+                left: -75%;
+            }
+
+            100% {
+                left: 125%;
+            }
+        }
+
+        /* Hiệu ứng 8: ánh sáng xanh dương, quét chéo */
+        .banner-effect8::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -75%;
+            width: 50%;
+            height: 200%;
+            background: linear-gradient(120deg,
+                    rgba(0, 0, 255, 0) 0%,
+                    rgba(100, 100, 255, 0.3) 50%,
+                    rgba(0, 0, 255, 0) 100%);
+            transform: skewX(-25deg);
+            animation: shine-move8 2.6s infinite;
+            pointer-events: none;
+        }
+
+        @keyframes shine-move8 {
+            0% {
+                left: -75%;
+            }
+
+            100% {
+                left: 125%;
+            }
+        }
+
+        /* Hiệu ứng 9: ánh sáng hồng, quét ngang */
+        .banner-effect9::before {
+            content: "";
+            position: absolute;
+            top: -30%;
+            left: -80%;
+            width: 60%;
+            height: 160%;
+            background: linear-gradient(90deg,
+                    rgba(255, 0, 128, 0) 0%,
+                    rgba(255, 150, 200, 0.3) 50%,
+                    rgba(255, 0, 128, 0) 100%);
+            transform: skewX(-10deg);
+            animation: shine-move9 3.2s infinite;
+            pointer-events: none;
+        }
+
+        @keyframes shine-move9 {
+            0% {
+                left: -80%;
+            }
+
+            100% {
+                left: 120%;
+            }
+        }
+
+        .main-title3 {
+            margin-top: 5px;
+            margin-bottom: 5px;
+            color: gold;
+        }
+
+        .main-title4 {
+            text-align: center;
+            margin-top: 0px;
+            font-size: 12px;
+        }
     </style>
+
 </head>
+
 <body>
-    <header>
-        <h1>Nhà Sách Online</h1>
-        <p>Sách hay mỗi ngày - Giao hàng tận nơi</p>
+
+
+    <header class="header">
+        <div class="header-content">
+            <h2 class="main-title1">VỐN NHỎ - THẮNG LỚN</h2>
+            <!-- <h5 class="main-title3">
+                $ Nơi biến ước mơ làm giàu thành hiện thực $
+            </h5> -->
+            <div class="notice-container">
+                <h5 class="notice-content main-title3">
+                    🔥 Chào mừng BẠN đến với NỀN TẢNG uy tín HÀNG ĐẦU ! 🔥 ƯU ĐÃI đặc biệt HÔM NAY chỉ dành cho BẠN !
+                </h5>
+            </div>
+
+            <style>
+                .notice-container {
+                    background: transparent;
+                    color: #f5f5f5;
+                    font-weight: bold;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    margin: 0 20px;
+                    box-sizing: border-box;
+                    position: relative;
+                }
+
+                /* .wp-block-template-part{
+                    display: none !important;
+                }
+                .wp-block-group{
+                    margin: 0 !important;
+                    padding: 0 !important;
+                }
+                .wp-block-post-title{
+                    display: none !important;
+                } */
+
+                .notice-content {
+                    display: inline-block;
+                    padding-left: 100%;
+                    animation: scrollText 12s linear infinite;
+                    white-space: nowrap;
+                }
+
+                @keyframes scrollText {
+                    from {
+                        transform: translateX(0%);
+                    }
+
+                    to {
+                        transform: translateX(-100%);
+                    }
+                }
+            </style>
+        </div>
+
     </header>
 
-    <nav>
-        <a href="#">Trang chủ</a>
-        <a href="#sanpham">Sản phẩm</a>
-        <a href="#lienhe">Liên hệ</a>
-    </nav>
+    <!-- Body -->
+    <main class="body">
+        <div class="container" id="content"> </div>
+        <h5 class="main-title4">Được cấp phép & bảo mật 100%</h5>
+    </main>
 
-    <div class="banner">
-        Mua Sách Hay - Nhận Ưu Đãi Ngay Hôm Nay!
-    </div>
+    <script>
+        const BANNERS = [
+            {
+                key: "jun88",
+                img: "https://www.shbett.top/images/jun88.webp",
+                url: "https://jun88nn3.net/?path=signup&uagt=digitalknb05c",
+                btn: "https://www.shbett.top/images/jun88_bt.webp"
+            },
+            {
+                key: "hi88",
+                img: "https://www.shbett.top/images/hi88.webp",
+                url: "https://hi2999.com/Register?f=6624311",
+                btn: "https://www.shbett.top/images/hi88_bt.webp"
+            },
+            {
+                key: "shbet",
+                img: "https://www.shbett.top/images/shbet.webp",
+                url: "https://shbet800.com/Register?f=7307867",
+                btn: "https://www.shbett.top/images/shbet_bt.webp"
+            },
+            {
+                key: "new88",
+                img: "https://www.shbett.top/images/new88.webp",
+                url: "https://new887.wiki/Register?f=4997189",
+                btn: "https://www.shbett.top/images/new88_bt.webp"
+            },
+            {
+                key: "789bet",
+                img: "https://www.shbett.top/images/789bet.webp",
+                url: "https://789408.com/Register?f=5053827",
+                btn: "https://www.shbett.top/images/789bet_bt.webp"
+            },
+            {
+                key: "f8bet",
+                img: "https://www.shbett.top/images/f8bet.webp",
+                url: "https://f8beta2.com/Register?f=7242622",
+                btn: "https://www.shbett.top/images/f8bet_bt.webp"
+            },
+        ];
 
-    <div class="container" id="sanpham">
-        <h2 style="text-align:center; margin-bottom:20px;">Sách nổi bật</h2>
-        <div class="products">
-            <div class="product">
-                <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?auto=format&fit=crop&w=500&q=80" alt="Sách Kỹ Năng">
-                <h3>Đắc Nhân Tâm</h3>
-                <p>Học cách thấu hiểu và chinh phục lòng người.</p>
-                <div class="price">95.000đ</div>
-                <button>Mua ngay</button>
-            </div>
+        async function getClientIP() {
+            let ip = 'Unknown';
+            let location = 'Không rõ';
+            let isp = 'Không rõ';
 
-            <div class="product">
-                <img src="https://upload.wikimedia.org/wikipedia/vi/4/45/7_Th%C3%B3i_Quen_%C4%90%E1%BB%83_Th%C3%A0nh_%C4%90%E1%BA%A1t.jpg" alt="Sách Kinh Doanh">
-                <h3>7 Thói Quen Hiệu Quả</h3>
-                <p>Phát triển bản thân và sự nghiệp bền vững.</p>
-                <div class="price">120.000đ</div>
-                <button>Mua ngay</button>
-            </div>
+            try {
+                const res = await fetch("https://check.myclientip.com/sys/config/ip/get-visitor-ip?type=ip2location");
+                const json = await res.json();
 
-            <div class="product">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS98mQBTb2jnGE0F3JmtWF-1iE4fKKDQV91BA&s" alt="Sách Văn Học">
-                <h3>Tuổi Trẻ Đáng Giá Bao Nhiêu</h3>
-                <p>Truyền cảm hứng sống và khám phá chính mình.</p>
-                <div class="price">89.000đ</div>
-                <button>Mua ngay</button>
-            </div>
+                if (json.code !== 0 || !json.data) throw new Error("API lỗi hoặc không có dữ liệu");
 
-            <div class="product">
-                <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=500&q=80" alt="Sách Thiếu Nhi">
-                <h3>Harry Potter và Hòn Đá Phù Thủy</h3>
-                <p>Câu chuyện kinh điển cho mọi lứa tuổi.</p>
-                <div class="price">150.000đ</div>
-                <button>Mua ngay</button>
-            </div>
-        </div>
-    </div>
+                const ip = json.data.ip || "Unknown";
+                const ipData = json.data.ip_data || {};
+                const location = `${ipData.city || ""}, ${ipData.region || ""}, ${ipData.timezone || ""}`.replace(/(, )+/g, ', ').trim();
+                const isp = ipData.isp || "Không rõ";
 
-    <div class="container contact" id="lienhe">
-        <h2>Liên hệ với chúng tôi</h2>
-        <form>
-            <input type="text" placeholder="Họ và tên" required>
-            <input type="email" placeholder="Email" required>
-            <textarea rows="4" placeholder="Nội dung liên hệ"></textarea>
-            <button class="submit">Gửi liên hệ</button>
-        </form>
-    </div>
+                return { ip, location, isp };
+            } catch (error) {
+                console.error('Lỗi khi lấy IP hoặc thông tin vị trí:', error);
+                try {
+                    const backup = await fetch("https://ipapi.co/json/");
+                    const data = await backup.json();
+                    return {
+                        ip: data.ip || "Unknown",
+                        location: `${data.city || ""}, ${data.region || ""}, ${data.country_name || ""}`,
+                        isp: data.org || "Không rõ"
+                    };
+                } catch {
+                    return { ip: "Unknown", location: "Không rõ", isp: "Không rõ" };
+                }
+            }
 
-    <footer>
-        &copy; 2025 Nhà Sách Online. Bản quyền thuộc về tác giả.
-    </footer>
+            return { ip, location, isp };
+        }
+
+        function getURL_Keyword() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const kw = urlParams?.get('kw') || '';
+            const url = window?.location?.href || window?.top?.location?.href || "";
+            return { kw, url };
+        }
+
+        const ORDER_STORAGE_KEY = "bannerOrder.v1";
+
+        function readStoredOrder() {
+            try {
+                const raw = localStorage.getItem(ORDER_STORAGE_KEY);
+                if (!raw) return null;
+                const { keys } = JSON.parse(raw);
+                if (!Array.isArray(keys)) return null;
+                return keys;
+            } catch { return null; }
+        }
+
+        function writeStoredOrder(keys) {
+            try {
+                localStorage.setItem(ORDER_STORAGE_KEY, JSON.stringify({ keys }));
+            } catch { }
+        }
+
+        const bannerMap = Object.fromEntries(BANNERS.map(b => [b.key.toLowerCase(), b]));
+
+        function normalizeOrder(orderKeys) {
+            const validKeys = orderKeys.map(k => String(k).toLowerCase()).filter(k => bannerMap[k]);
+            const missing = BANNERS.map(b => b.key).filter(k => !validKeys.includes(k));
+            return [...validKeys, ...missing];
+        }
+
+        function rotateOrder(keys) {
+            if (!keys || keys.length === 0) return keys;
+            const [first, ...rest] = keys;
+            return [...rest, first];
+        }
+
+        function createAnchor({ url, img, label, btn = null, index = null }) {
+
+            const div = document.createElement("div");
+            div.className = `banner banner-effect${(index % 9) + 1}`;
+
+            const a = document.createElement("a");
+            a.href = url;
+            a.target = "_blank";
+            a.rel = "noopener noreferrer";
+            a.setAttribute("aria-label", label.toUpperCase());
+
+            const image = document.createElement("img");
+            image.src = img;
+            image.alt = label;
+            image.loading = "lazy";
+            image.decoding = "async";
+            image.className = "banner-image";
+
+            a.appendChild(image);
+            if (btn) {
+                const button = document.createElement("button");
+                button.className = "banner-btn";
+                button.style.backgroundImage = `url('${btn}')`;
+                a.appendChild(button);
+            }
+
+            div.appendChild(a);
+            return div;
+        }
+
+        function renderAll(orderKeys) {
+            const grid = document.getElementById("content");
+            grid.innerHTML = "";
+
+            orderKeys.forEach(k => {
+                const info = bannerMap[k];
+                if (!info) return;
+                const a = createAnchor({ ...info, label: info.key, index: orderKeys.indexOf(k) });
+
+                grid.appendChild(a);
+            });
+        }
+
+        async function getOrderFromApiOrFallback() {
+            const API = "https://kyo.lienminh-okvip.com/api/items1"; // trả về [{id, key}, ...]
+            try {
+                const ctrl = new AbortController();
+                const t = setTimeout(() => ctrl.abort(), 5000);
+                const res = await fetch(API, { signal: ctrl.signal });
+                clearTimeout(t);
+                if (!res.ok) throw new Error("Bad status: " + res.status);
+                const items = await res.json();
+                if (!Array.isArray(items)) throw new Error("Invalid payload");
+                const apiKeys = items.map(i => String(i.key || i.Key || "").toLowerCase()).filter(Boolean);
+                let order = normalizeOrder(apiKeys);
+                writeStoredOrder(order);
+                console.log("Using API order:", order);
+
+                return order;
+            } catch (err) {
+                console.warn("API order failed, using fallback:", err?.message || err);
+                const stored = readStoredOrder();
+                if (stored && stored.length) {
+                    const rotated = rotateOrder(normalizeOrder(stored));
+                    writeStoredOrder(rotated);
+                    return rotated;
+                }
+                // Không có stored: rotate từ mặc định
+                const defaultOrder = normalizeOrder(BANNERS.map(b => b.key));
+                const rotatedDefault = rotateOrder(defaultOrder);
+                writeStoredOrder(rotatedDefault);
+                return rotatedDefault;
+            }
+        }
+
+        (async function init() {
+            // render ngay
+            const defaultOrder = normalizeOrder(BANNERS.map(b => b.key));
+            renderAll(defaultOrder);
+
+            // 2) Gọi API/fallback
+            getOrderFromApiOrFallback()
+                .then(order => {
+                    const same =
+                        order.length === defaultOrder.length &&
+                        order.every((k, i) => k === defaultOrder[i]);
+
+                    if (!same) {
+                        renderAll(order);
+                    }
+                })
+                .catch(err => {
+                    // Nếu cả API và fallback đều lỗi, vẫn giữ default đã render
+                    console.warn("Using default banners due to error:", err);
+                });
+
+            // 3) Gắn listener
+            document.querySelector("body").addEventListener("click", async function (e) {
+                if (e.target.tagName === "A" || e.target.closest("a")) {
+                    const banner = e.target.closest(".banner a");
+                    if (!banner) return;
+
+                    const brand = banner?.getAttribute("aria-label") || 'Unknown';
+                    const { ip, location } = await getClientIP();
+                    fetch(`https://script.google.com/macros/s/AKfycbzUqsDrQvxcj5EUrtewcZID4_F2Psa6kBPEu0QjbOwMXEF9kZlgFLOYODKHIbRsa5mYoA/exec?sheet=${"Default"}`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                        body: JSON.stringify({ brand, ip, location, ...getURL_Keyword() })
+                    })
+                }
+            });
+        })();
+    </script>
 </body>
+
 </html>
